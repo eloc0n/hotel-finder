@@ -85,29 +85,14 @@ class AccommodationsController extends Controller
 
             }else{
                 echo ' im here2';
-                
-                // $count_of_guests = DB::table('room')
-                //     ->select('count_of_guests')
-                //     ->where('city', $search_city)
-                //     ->where('room_type', $search_room_type)
-                //     ->distinct()
-                //     ->get()
-                //     ->pluck('count_of_guests');
-
-                // echo $count_of_guests;
-
 
                 # From room table get city, room_type and filter accordingly
                 $accommodations = DB::table('room')->where([
                     ['city', $search_city],
                     ['room_type', $search_room_type],
-                    // ['count_of_guests', $count_of_guests],
-                ])->whereBetween('price', [0, 5000])->distinct()
-                ->get()
-                ->pluck('price');
+                ])->get();
             }
-            // echo $accommodations;
-            # Takes a JSON encoded string and converts it into a PHP variable
+           
             if ($accommodations) {
                 echo ' i m here3';
                 # Get city
@@ -147,24 +132,6 @@ class AccommodationsController extends Controller
 
         # Get room
         $hotel = DB::table('room')->where('room_id',$id)->get(); 
-
-        # Get user review
-        // $add_review = $request->get('review');
-        // echo $add_review;
-
-        # Get user_id
-        // $user_id = DB::table('user')->select('user_id')->distinct()->get()->pluck('user_id')->first();
-
-        // # Get room_id of the searched room
-        // $room_id = DB::table('room')->where('room_id', $id)->distinct()->get()->pluck('room_id')->first();
-
-        // # Insert review in to db
-        // $reviews = DB::table('reviews')->insert([
-        //     'text'=>$add_review,
-        //     'user_id'=>$user_id,
-        //     'room_id'=>$room_id,
-        //     'rate' => 5,
-        // ]);
 
         $results = [
             'hotel' => $hotel, 
