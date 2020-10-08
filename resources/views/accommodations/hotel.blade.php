@@ -29,13 +29,25 @@
                 Type of room: {{$data->room_type}}
                 </div>
                 <div class="col">
-                Type of room: {{$data->parking}}
+                @if(($data->parking)===1)
+                    Parking: Yes
+                @else   
+                    Parking: No
+                @endif
                 </div>
                 <div class="col">
-                Type of room: {{$data->wifi}}
+                @if(($data->wifi)===1)
+                    Wifi: Yes
+                @else   
+                    Wifi: No
+                @endif
                 </div>
                 <div class="col">
-                Type of room: {{$data->pet_friendly}}
+                @if(($data->pet_friendly)===1)
+                    Pet Friendly: Yes
+                @else   
+                    Pet Friendly: No
+                @endif
                 </div>
             </div>
         </div>
@@ -51,7 +63,7 @@
             @foreach($reviews as $review)
                 @if($loop->iteration)
                     <p> {{$review->user_id}}. </p>
-                    <h5> {{$review->text}} </h5>
+                    <h5>{{$review->text}} </h5>
                     <p> {{$review->rate}} </p>
                     <p>Add time: {{$review->date_created}} </p>
                 @endif
