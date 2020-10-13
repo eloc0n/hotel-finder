@@ -18,3 +18,4 @@ $(".checkOut").datepicker({
   autoclose: true
 });
 
+

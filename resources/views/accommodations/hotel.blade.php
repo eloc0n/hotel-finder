@@ -1,9 +1,11 @@
 @extends('layouts.layout')
 
 @section('content')
+    
 
 
 @if($hotel)
+
 <div class="col mt-3">
     @foreach($hotel as $data)
     <div class="card">
@@ -52,23 +54,25 @@
             </div>
         </div>
     </div>
+
     <div class="mt-4">
         <h4>Room Description</h4>
         <p>{{$data->long_description}}</p>
     </div>
-   
 
-        <div class="mt-4 mb-4">
-            <h4 class="mb-3">Reviews</h4>
-            @foreach($reviews as $review)
-                @if($loop->iteration)
-                    <p> {{$review->user_id}}. </p>
-                    <h5>{{$review->text}} </h5>
-                    <p> {{$review->rate}} </p>
-                    <p>Add time: {{$review->date_created}} </p>
-                @endif
-            @endforeach
-        </div>
+    <div class="" style="width: 640px; height: 480px" id="mapContainer"></div>
+
+    <div class="mt-4 mb-4">
+        <h4 class="mb-3">Reviews</h4>
+        @foreach($reviews as $review)
+            @if($loop->iteration)
+                <p> {{$review->user_id}}. </p>
+                <h5>{{$review->text}} </h5>
+                <p> {{$review->rate}} </p>
+                <p>Add time: {{$review->date_created}} </p>
+            @endif
+        @endforeach
+    </div>
         
     <form action="/hotel/{{$data->room_id}}" method="POST">
     @csrf
@@ -86,15 +90,16 @@
         </div>
         <button type="submit" class="btn btn-danger mb-5">Submit</button>
     </form>
-   
+    
+    
     @endforeach
 </div>
 
 @else
     no data
 @endif
- 
-
 
 
 @endsection
+
+

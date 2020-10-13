@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="col-3 mt-3">
+<div class="col-3 mt-3 mb-3">
   <h3 class="mb-3">Find the Perfect Hotel</h3>
     <form action="/search" method='GET'>
 
