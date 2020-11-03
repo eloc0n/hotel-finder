@@ -61,7 +61,7 @@
     </form>
 </div>
 
-<div class="col-9 mt-3">
+<div class="col-9 mt-3 mb-3">
   <div class="card">
     <div class="card-body">
       Searched Results

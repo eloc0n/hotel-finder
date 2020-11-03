@@ -142,6 +142,23 @@ class AccommodationsController extends Controller
 
     }
 
+    
+    public function location($id) {
+
+        # Get location
+        $lat_location = DB::table('room')->select('lat_location')->where('room_id',$id)->get()->toArray();
+        $lng_location = DB::table('room')->select('lng_location')->where('room_id',$id)->get()->toArray();
+
+
+        $results = [
+            'lat_location' => $lat_location, 
+            'lng_location' => $lng_location, 
+        ];
+
+        return view('layouts.layout', $results);
+
+    }
+
     public function store(Request $request, $id) {
         
         $review = new Accommodation;

@@ -10,7 +10,7 @@
     @foreach($hotel as $data)
     <div class="card">
         <div class="card-body">
-            {{$data->name}} - {{$data->city}}, {{$data->area}} | Reviews: | 
+            {{$data->name}} - {{$data->city}}, {{$data->area}}
             <div class="float-right">
                 Per night: {{$data->price}} €
             </div>
@@ -60,17 +60,19 @@
         <p>{{$data->long_description}}</p>
     </div>
 
-    <div class="" style="width: 640px; height: 480px" id="mapContainer"></div>
+    <div class="col-sm-12" style="height: 480px" id="mapContainer"></div>
 
     <div class="mt-4 mb-4">
         <h4 class="mb-3">Reviews</h4>
         @foreach($reviews as $review)
-            @if($loop->iteration)
-                <p> {{$review->user_id}}. </p>
-                <h5>{{$review->text}} </h5>
-                <p> {{$review->rate}} </p>
-                <p>Add time: {{$review->date_created}} </p>
-            @endif
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p> {{$review->user_id}}. default_user</p>
+                    <p> {{$review->rate}}/5 </p>
+                    <h5>{{$review->text}} </h5>
+                    <p>Add time: {{$review->date_created}} </p>
+                </div>
+            </div>
         @endforeach
     </div>
         
@@ -101,5 +103,4 @@
 
 
 @endsection
-
 

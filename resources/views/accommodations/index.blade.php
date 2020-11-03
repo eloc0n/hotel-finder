@@ -2,9 +2,9 @@
 
 @section('content')
   <form action="/search" method='GET'>
-  <div class="card mt-3">
+  <div class="card mt-3 mb-3">
     <div class="card-body">
-      <div class="form-row">
+      <div class="form-row ">
 
         
 
@@ -30,7 +30,7 @@
           </div>
         </div>
 
-        <div class="">
+          <div class="">
             <select class="custom-select mb-4" name="search_guests" id="guests">
                 <option value="" disabled selected>Count of Guests</option>
                 @foreach($count_of_guests as $data)
