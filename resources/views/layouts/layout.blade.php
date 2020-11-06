@@ -58,19 +58,14 @@
         <script>    
 
             // Obtain from db lat and lng
+            var lat_location = {!! json_encode($data->lat_location ?? '', JSON_HEX_TAG) !!};
+            var lng_location = {!! json_encode($data->lng_location ?? '', JSON_HEX_TAG) !!};
 
-            // var lat_location = {{ json_encode($lng_location ?? '') }};
-            // var lng_location = "<?php echo 33; ?>";
-            
-            var lat_location = {!! json_encode($lat_location ?? '', JSON_HEX_TAG) !!};
-            var lng_location = {!! json_encode($lng_location ?? '', JSON_HEX_TAG) !!};
-            
-
-            console.log(lng_location[0].lng_location);
-            console.log(lat_location[0].lat_location);
+            // console.log(lng_location);
+            // console.log(lat_location);
 
             function moveMapToBerlin(map){
-                map.setCenter({lat:lat_location[0].lat_location, lng:lng_location[0].lng_location});
+                map.setCenter({lat: lat_location, lng: lng_location});
                 map.setZoom(17);
             }
 
@@ -117,6 +112,7 @@
 
             // Add the marker to the map:
             map.addObject(marker);
+                        
 
             
 

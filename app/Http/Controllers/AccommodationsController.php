@@ -155,10 +155,11 @@ class AccommodationsController extends Controller
             'lng_location' => $lng_location, 
         ];
 
-        return view('layouts.layout', $results);
+        return  $results;
 
     }
 
+    
     public function store(Request $request, $id) {
         
         $review = new Accommodation;

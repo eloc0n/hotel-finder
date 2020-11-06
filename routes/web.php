@@ -22,5 +22,5 @@ Route::get('/', function () {
 Route::get('/room', [AccommodationsController::class, 'index']);
 Route::get('/search', [AccommodationsController::class, 'search']);
 Route::get('/hotel/{id}', [AccommodationsController::class, 'hotel']);
-Route::get('/hotel/{id}', [AccommodationsController::class, 'location']);
+// Route::get('/hotel/{id}', [AccommodationsController::class, 'location']);
 Route::post('/hotel/{id}', [AccommodationsController::class, 'store']);
