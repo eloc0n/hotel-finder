@@ -41,13 +41,13 @@
       
           <div class="inner-addon right-addon mb-2">
               <i class="fa fa-calendar" aria-hidden="true" id="checkInIcon"></i>
-              <input type="text" name="check-in" class="form-control checkIn" 
+              <input type="text" name="check_in" class="form-control checkIn" 
               placeholder="Check-In">
           </div>
 
           <div class="inner-addon right-addon">
               <i class="fa fa-calendar" aria-hidden="true" id="checkOutIcon"></i>
-              <input type="text" name="check-out" class="form-control checkOut" placeholder="Check-Out">
+              <input type="text" name="check_out" class="form-control checkOut" placeholder="Check-Out">
           </div>
 
           <div class="input-group mb-3">

@@ -54,10 +54,26 @@
             </div>
         </div>
     </div>
-
+    
     <div class="mt-4">
         <h4>Room Description</h4>
         <p>{{$data->long_description}}</p>
+        <div class="col-3 mt-3 mb-3">
+            <form action="/hotel/{{$data->room_id}}" method="POST">
+                @csrf
+                <div class="inner-addon right-addon mt-3">
+                    <i class="fa fa-calendar" aria-hidden="true" id="checkInIcon"></i>
+                    <input type="text" name="check_in" class="form-control checkIn" 
+                    placeholder="Check-In" required>
+                </div>
+
+                <div class="inner-addon right-addon mt-3">
+                    <i class="fa fa-calendar" aria-hidden="true" id="checkOutIcon"></i>
+                    <input type="text" name="check_out" class="form-control checkOut" placeholder="Check-Out" required>
+                </div>
+                <button type="submit" name="book_now" class="btn btn-danger mt-4 mb-5">Book Now</button>
+            </form> 
+        </div>
     </div>
 
     <div class="col-sm-12" style="height: 480px" id="mapContainer"></div>
@@ -90,11 +106,11 @@
             <label for="exampleInputEmail1">Add Review</label>
             <textarea name="review" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
-        <button type="submit" class="btn btn-danger mb-5">Submit</button>
+        <button type="submit" name="add_review" class="btn btn-danger mb-5">Submit</button>
     </form>
     
-    
     @endforeach
+    
 </div>
 
 @else

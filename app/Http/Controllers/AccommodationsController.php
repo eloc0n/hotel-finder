@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\models\Accommodation;
+use App\models\Flight;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -36,8 +37,8 @@ class AccommodationsController extends Controller
         $search_room_type = $request->get('search_room_type');
         $search_guests = $request->get('search_guests');
 
-        $search_check_in = $request->get('check-in');
-        $search_check_out = $request->get('check-out');
+        $search_check_in = $request->get('check_in');
+        $search_check_out = $request->get('check_out');
 
         $search_min = $request->get('min');
         $search_max = $request->get('max');
@@ -56,25 +57,29 @@ class AccommodationsController extends Controller
             ->pluck('price');
     
             
-        echo $price_range;
+        // echo $price_range;
 
         # Check if user filled in check in/out
         if ($search_check_in and $search_check_out) {
-            # Get user_id
-            $user_id = DB::table('user')->select('user_id')->distinct()->get()->pluck('user_id')->first();
-            # Get room_id of the searched room
-            $room_id = DB::table('room')->where('city', $search_city)->distinct()->get()->pluck('room_id')->first();
-            # Save into bookings table
-            $bookings = DB::table('bookings')->insert([
-                'check_in_date'=>$search_check_in,
-                'check_out_date'=>$search_check_out,
-                'user_id'=>$user_id,
-                'room_id'=>$room_id
-            ]);
+             
+            // # Get user_id
+            // $user_id = DB::table('user')->select('user_id')->distinct()->get()->pluck('user_id')->first();
+
+            // # Get room_id of the searched room
+            // $room_id = DB::table('room')->where('city', $search_city)->distinct()->get()->pluck('room_id')->first();
+            
+            // # Save into bookings table
+            // DB::table('bookings')->insert([
+            //     'check_in_date'=>$search_check_in,
+            //     'check_out_date'=>$search_check_out,
+            //     'user_id'=>$user_id,
+            //     'room_id'=>$room_id
+            // ]);
 
             # Check if variables are empty
             if ($count_of_guests and json_decode($price_range)) {
-                echo 'im here1';
+                // echo 'im here1';
+
                 # From room table get city, room_type, count_of_guests, price and filter accordingly
                 $accommodations = DB::table('room')->where([
                     ['city', $search_city],
@@ -84,7 +89,7 @@ class AccommodationsController extends Controller
                 ])->whereBetween('price', [$search_min, $search_max])->get(); 
 
             }else{
-                echo ' im here2';
+                // echo ' im here2';
 
                 # From room table get city, room_type and filter accordingly
                 $accommodations = DB::table('room')->where([
@@ -94,7 +99,8 @@ class AccommodationsController extends Controller
             }
            
             if ($accommodations) {
-                echo ' i m here3';
+                // echo ' i m here3';
+
                 # Get city
                 $city = DB::table('room')->select('city')->distinct()->get()->pluck('city');
                 # Get room type
@@ -146,8 +152,8 @@ class AccommodationsController extends Controller
     public function location($id) {
 
         # Get location
-        $lat_location = DB::table('room')->select('lat_location')->where('room_id',$id)->get()->toArray();
-        $lng_location = DB::table('room')->select('lng_location')->where('room_id',$id)->get()->toArray();
+        $lat_location = DB::table('room')->select('lat_location')->where('room_id',$id)->get();
+        $lng_location = DB::table('room')->select('lng_location')->where('room_id',$id)->get();
 
 
         $results = [
@@ -159,18 +165,31 @@ class AccommodationsController extends Controller
 
     }
 
-    
     public function store(Request $request, $id) {
         
-        $review = new Accommodation;
+        if ($request->has('book_now')) {
+            $booking = new Flight;
         
-        $review->text = $request->review;
-        $review->rate = $request->rate;
-        $review->user_id = DB::table('user')->select('user_id')->distinct()->get()->pluck('user_id')->first();
-        $review->room_id = DB::table('room')->where('room_id',$id)->distinct()->get()->pluck('room_id')->first();
+            $booking->check_in_date = $request->check_in;
+            $booking->check_out_date = $request->check_out;
+            
+            $booking->user_id = DB::table('user')->select('user_id')->distinct()->get()->pluck('user_id')->first();
+            $booking->room_id = DB::table('room')->where('room_id',$id)->distinct()->get()->pluck('room_id')->first();
 
-        $review->save();
+            $booking->save();
+        }
 
+        if ($request->has('add_review')) {
+            $review = new Accommodation;
+            
+            $review->text = $request->review;
+            $review->rate = $request->rate;
+
+            $review->user_id = DB::table('user')->select('user_id')->distinct()->get()->pluck('user_id')->first();
+            $review->room_id = DB::table('room')->where('room_id',$id)->distinct()->get()->pluck('room_id')->first();
+
+            $review->save();
+        }
         // error_log(request('review'));
         
         return redirect('/hotel/'.$id);

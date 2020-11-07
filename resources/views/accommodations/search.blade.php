@@ -47,13 +47,13 @@
 
         <div class="inner-addon right-addon mt-3">
             <i class="fa fa-calendar" aria-hidden="true" id="checkInIcon"></i>
-            <input type="text" name="check-in" class="form-control checkIn" 
+            <input type="text" name="check_in" class="form-control checkIn" 
             placeholder="Check-In" required>
         </div>
 
         <div class="inner-addon right-addon mt-3">
             <i class="fa fa-calendar" aria-hidden="true" id="checkOutIcon"></i>
-            <input type="text" name="check-out" class="form-control checkOut" placeholder="Check-Out" required>
+            <input type="text" name="check_out" class="form-control checkOut" placeholder="Check-Out" required>
         </div>
         <!-- <input type="search" id="search" name="search"> -->
         <input class="btn btn-secondary btn-block mt-3" type="submit" value="Search">
@@ -102,7 +102,7 @@
     </div>
     @endforeach
     @else
-      no data
+      no rooms available with selected criteria
     @endif
   </div>
 </div>

@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Accommodation extends Model
+class Flight extends Model
 {
     use HasFactory;
-    // protected $table = 'bookings';
-    protected $table = 'reviews';
+    protected $table = 'bookings';
 
     public $timestamps = false;
 }
