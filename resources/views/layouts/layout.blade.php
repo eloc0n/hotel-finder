@@ -21,9 +21,9 @@
 
     <nav>
         <ul class="horizontal">
-            <li><a class="active" href="#">Hotels</a></li>
-            <li class="rightli" style="float:right"><a href="#">Profile</a></li>
-            <li class="rightli" style="float:right"><a href="/room">Home</a></li>
+            <li><a class="" href="/room">Hotels</a></li>
+            <!-- <li class="rightli" style="float:right"><a href="#">Profile</a></li> -->
+            <!-- <li class="rightli" style="float:right"><a href="/room">Home</a></li> -->
         </ul>
     </nav>
 
