@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Accommodation extends Model
 {
     use HasFactory;
-    // protected $table = 'bookings';
+    protected $fillable = 'review_id';
     protected $table = 'reviews';
 
     public $timestamps = false;
