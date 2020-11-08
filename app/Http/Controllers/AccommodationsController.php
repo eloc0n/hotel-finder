@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use app\Models\Accommodation;
-use app\Models\Flight;
+use App\Models\Accommodation;
+use App\Models\Flight;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
