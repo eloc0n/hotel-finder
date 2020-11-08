@@ -14,12 +14,12 @@ use App\Http\Controllers\AccommodationsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
-Route::get('/room', [AccommodationsController::class, 'index']);
+Route::get('', [AccommodationsController::class, 'index']);
 Route::get('/search', [AccommodationsController::class, 'search']);
 Route::get('/hotel/{id}', [AccommodationsController::class, 'hotel']);
 Route::post('/hotel/{id}', [AccommodationsController::class, 'store']);
